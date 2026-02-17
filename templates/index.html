@@ -329,36 +329,43 @@
     // 4) SEND WHATSAPP MESSAGE
     // -------------------------------
     
-function sendWhatsApp() {
+async function sendWhatsApp() {
 
     const name = document.getElementById("name").value;
     const mobile = document.getElementById("mobile").value;
     const pickup = document.getElementById("pickup").value;
     const drop = document.getElementById("drop").value;
-    const date = document.getElementById("date").values;
-    const time = document.getElementById("time").values
 
-    if (!name || !mobile || !pickup || !drop) {
-        alert("Please fill all booking details!");
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    const tripType = document.querySelector("input[name='tripType']:checked").value;
+    const members = document.getElementById("members").value;
+    const carModel = document.getElementById("carModel").value;
+
+    // ✅ Validation
+    if (!name || !mobile || !pickup || !drop || !date || !time) {
+        alert("Please fill all details!");
         return;
     }
 
-    let msg =
-        `Taxi Booking Request\n\n` +
-        `Name: ${name}\n` +
-        `Mobile: ${mobile}\n` +
-        `Pickup: ${pickup}\n` +
-        `Drop: ${drop}\n`+
-        `date: ${date}\n`+
-        `time: ${time}`;
+    const message =
+        `🚖 *Taxi Booking Request* \n\n `+
+        `*Name:* ${name}\n` +
+        `*Mobile:* ${mobile}\n `+
+        `*Pickup:* ${pickup}\n` +
+        `*Drop:* ${drop}\n` +
+        `*Date:* ${date}\n` +
+        `*Time:* ${time}\n` +
+        `*Trip Type:* ${tripType}\n` +
+        `*Passengers:* ${members}\n` +
+        `*Car Model:* ${carModel}`;
 
-    let url = "https://wa.me/919940395607?text=" + encodeURIComponent(msg);
+    let whatsappUrl =
+        `https://wa.me/919940395607?text=${encodeURIComponent(message)}`;
 
-    window.open(url, "_blank");
+    window.open(whatsappUrl, "_blank");
 }
-
-
-
    
     // -------------------------------
     // 5) INPUT EVENTS
