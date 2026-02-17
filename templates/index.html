@@ -335,8 +335,10 @@ function sendWhatsApp() {
     const mobile = document.getElementById("mobile").value;
     const pickup = document.getElementById("pickup").value;
     const drop = document.getElementById("drop").value;
+    const date = document.getElementById("date").values;
+    const time = document.getElementById("time").values
 
-    if (!name || !mobile || !pickup || !drop) {
+    if (!name || !mobile || !pickup || !drop || !date || !time) {
         alert("Please fill all booking details!");
         return;
     }
@@ -346,7 +348,9 @@ function sendWhatsApp() {
         `Name: ${name}\n` +
         `Mobile: ${mobile}\n` +
         `Pickup: ${pickup}\n` +
-        `Drop: ${drop}`;
+        `Drop: ${drop}`+
+        `date: ${date}`+
+        `time: ${time}`;
 
     let url = "https://wa.me/919940395607?text=" + encodeURIComponent(msg);
 
